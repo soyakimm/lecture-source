@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>file-io</title>
+</head>
+<body>
+	<h1>File upload</h1>
+	<h4>commons fileupload를 이용하면 multiple도 가능하며, 파일을 여러 input 태그로 업로드 하는 것도 가능하다.</h4>
+	<form action="commons/fileupload" method="post" encType="multipart/form-data">
+		<input type="file" name="uploadfile" multiple><br>
+		<input type="text" name="description">
+		<button type="submit">전송</button>
+	</form>
+
+</body>
+</html>
