@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>parameter</title>
+</head>
+<body>
+	<h1 align="center">Request Parameter</h1>
+	<h3>GET 방식의 요청</h3>
+	<h4>form 태그를 이용한 get 방식 요청</h4>
+	<form action="querystring" method="get">
+		<label>이름 : </label><input type="text" name="name">
+		<br>
+		<label>나이 : </label><input type="text" name="age">
+		<br>
+		<lable>생일 : </lable><input type="date" name="birthday">
+		<br>
+		<lable>성별 : </lable>
+		<input type="radio" name="gender" id="male" value="M"><label for="male">남자</label>
+		<input type="radio" name="gender" id="female" value="F"><label for="female">여자</label>
+		<br>
+		<label>국적 :</label>
+		<select name = "national">
+			<option value="ko">한국</option>
+			<option value="aust">호주</option>
+			<option value="cana">캐나다</option>
+			<option value="etc">기타</option>
+		</select>
+		<br>
+		<label>취미: </label>
+		<input type="checkbox" name="hobbies" id="movie" value="movie"><label for="movie">영화</label>
+		<input type="checkbox" name="hobbies" id="music" value="music"><label for="music">음악</label>
+		<input type="checkbox" name="hobbies" id="sleep" value="sleep"><label for="sleep">취침</label>
+		<br>
+		<input type="submit" value="GET 요청">
+	</form>
+	
+	<h4>a 태그의 href 속성에 직접 파라미터를 쿼리스트링 형태로 작성하여 get방식 요청</h4>
+	<a herf=http://127.0.0.1:8001/chap03/querystring?name=스파이더맨&age=27&birthday=2022-02-28&gender=F&national=cana&hobbies=movie&hobbies=music>
+	쿼리스트링을 이용한 값 전달</a>
+	
+	<h4>form 태그를 이용한 post 방식 요청</h4>
+		<form action="formdata" method="post">
+		<label>이름 : </label><input type="text" name="name">
+		<br>
+		<label>나이 : </label><input type="text" name="age">
+		<br>
+		<lable>생일 : </lable><input type="date" name="birthday">
+		<br>
+		<lable>성별 : </lable>
+		<input type="radio" name="gender" id="male2" value="M"><label for="male2">남자</label>
+		<input type="radio" name="gender" id="female2" value="F"><label for="female2">여자</label>
+		<br>
+		<label>국적 :</label>
+		<select name = "national">
+			<option value="ko">한국</option>
+			<option value="aust">호주</option>
+			<option value="cana">캐나다</option>
+			<option value="etc">기타</option>
+		</select>
+		<br>
+		<label>취미: </label>
+		<input type="checkbox" name="hobbies" id="movie2" value="movie"><label for="movie2">영화</label>
+		<input type="checkbox" name="hobbies" id="music2" value="music"><label for="music2">음악</label>
+		<input type="checkbox" name="hobbies" id="sleep2" value="sleep"><label for="sleep2">취침</label>
+		<br>
+		<input type="submit" value="POST 요청">
+	</form>
+	
+	
+</body>
+</html>
