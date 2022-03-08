@@ -12,7 +12,7 @@
 	<jsp:include page="common.jsp"/>
 	
 	<%
-		request.setAttribute("name", "홍길동");
+		request.setAttribute("name", "김소영");
 		/* RequestDispatcher rd = request.getRequestDispatcher("testForward.jsp");
 		rd.forward(request, response); */
 	%>

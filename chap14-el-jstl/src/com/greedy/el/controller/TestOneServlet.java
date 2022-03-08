@@ -17,7 +17,7 @@ public class TestOneServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setAttribute("name", "홍길동");
+		request.setAttribute("name", "스파이더맨");
 		request.setAttribute("age", 20);
 		request.setAttribute("phone", "010-1234-5678");
 	

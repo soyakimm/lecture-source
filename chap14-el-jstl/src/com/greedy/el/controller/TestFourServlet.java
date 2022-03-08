@@ -18,7 +18,7 @@ public class TestFourServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		MemberDTO requestMember = new MemberDTO("우별림", 20, "010-1234-5678", "byeol@greedy.com");
+		MemberDTO requestMember = new MemberDTO("김소영", 20, "010-1234-5678", "itswo@greedy.com");
 		MemberDTO sessionMember = new MemberDTO("홍길동", 22, "010-9999-8888", "hong@greedy.com");
 		
 		HttpSession session = request.getSession();

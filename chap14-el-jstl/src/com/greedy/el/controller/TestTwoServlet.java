@@ -17,7 +17,7 @@ public class TestTwoServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		MemberDTO member = new MemberDTO("홍길동", 20, "010-1234-5678", "hong@greedy.com");
+		MemberDTO member = new MemberDTO("스파이더맨", 20, "010-1234-5678", "hong@greedy.com");
 		
 		request.setAttribute("member", member);
 		
