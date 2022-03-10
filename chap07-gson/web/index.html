@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>gson</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+	<h1 align = "center">ajax 요청 후 stream을 이용한 json응답 (gson library 사용)</h1>
+	
+	<h3>1-1. 데이터 전송 없이 json 반환</h3>
+	<button id = "send-get-1">전송</button>
+	<script>
+	$("#send-get-1").click(function(){ //객체로 넘긴다.
+		$.ajax({
+			url : "/chap07/gson/test1",
+			type : "get",
+			success : function(data){
+				console.log(data);
+				console.table(data);
+			},
+			error : function(xhr) {
+				console.log(xhr);
+			}
+		});
+	});
+	</script>
+</body>
+</html>
