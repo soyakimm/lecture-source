@@ -26,11 +26,22 @@ public class Template {
 				/* SqlSessionFactoryBuilder는 SqlSessionFactory를 생성한 후 유지할 필요는 없다.
 				 * 따라서 메소드 스코프로 만든다.
 				 */
-				sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+				sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream); //한번만 생성하고, 더 이상 유지되지 않도록함
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
+		
+		/* SqlSession은 요청 시마다 생성해야 한다.
+		 * SqlSession은 쓰레드에 안전하지 않고 공유되지 않아야 한다. 
+		 * 요청 시 생성하고 요청이 완료되면 close하는 HTTP 요청과 유사한 스코프에 두는 것이 가장 올바른 방법이다.
+		 */
+		
+		SqlSession sqlSession = sqlSessionFactory.openSession(false); //false:auto commit하지 않습니다.
+		
+		System.out.println("sqlSessionFactory의 hashCode() : " + sqlSessionFactory.hashCode());
+		
+		return sqlSession;
 		
 	}
 
