@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ <configuration> <!-- 설정해주어야하는 최상위 태그 -->
+ 
+ 	<properties resource="connection-info.properties"/>
+ 	
+ 		<typeAliases>
+ 			<typeAlias type="com.greedy.common.SearchCriteria" alias="SearchCriteria"/>
+ 		</typeAliases>
+ 
+	<environments default="dev"> <!-- 기본 환경 설정 / 's' : 여러개 설정 가능 -->
+		<environment id="dev">
+ 			<transactionManager type="JDBC"/> <!-- JDBC(수동커밋)와 MANAGED(자동커밋) 둘 중 하나 선택 가능  -->
+ 				<!-- POOLED와 UNPOOLED 선택 가능 -->
+ 				<dataSource type="POOLED">
+				<property name="driver" value="${driver}"/>
+				<property name="url" value="${url}"/>
+				<property name="username" value="${username}"/>
+				<property name="password" value="${password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<package name="com.greedy.section01.xml"/>
+		<!-- package 하위를 모두 스캔 | section01 하위에 있는 파일을 모두 mapper할 수 있다. -->
+	</mappers>
+</configuration>
