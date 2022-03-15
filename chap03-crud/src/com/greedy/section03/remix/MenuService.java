@@ -1,7 +1,7 @@
-package com.greedy.section02.javaconfig;
+package com.greedy.section03.remix;
 
 import java.util.List;
-import static com.greedy.section02.javaconfig.Template.getSqlSession; /* static 부분 import자동으로 안됨 */
+import static com.greedy.section03.remix.Template.getSqlSession; /* static 부분 import자동으로 안됨 */
 import org.apache.ibatis.session.SqlSession;
 
 public class MenuService {

@@ -1,4 +1,4 @@
-package com.greedy.section02.javaconfig;
+package com.greedy.section03.remix;
 
 import org.apache.ibatis.datasource.pooled.PooledDataSource;
 import org.apache.ibatis.mapping.Environment;
