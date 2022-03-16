@@ -141,7 +141,7 @@ public class MenuService {
 		
 	}
 	
-	
+	     /*메뉴 정보 변경*/
 		public void modifyMenu(Map<String, Object> criteria) {
 		
 		SqlSession sqlSession = getSqlSession();
