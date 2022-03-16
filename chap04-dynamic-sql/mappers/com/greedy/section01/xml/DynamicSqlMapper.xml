@@ -129,7 +129,7 @@
 			suffix : 처리 후 엘리먼트 내에 내용이 있으면 가장 뒤에 붙여준다.
 			suffixOverrides : 처리 후 엘리먼트 내용 중 가장 뒤에 해당 문자들이 있다면 자동으로 지워준다.
 		 -->
-		 <trim prefix="WHERE" prefixOverrides="AND | OR">
+<!--  		 <trim prefix="WHERE" prefixOverrides="AND | OR">
 		 	<if test="nameValue != null">
 		 		MENU_NAME LIKE '%' || #{ nameValue } || '%'
 			</if>
@@ -137,9 +137,97 @@
 			   AND CATEGORY_CODE = #{ categoryValue } 
 			</if>
 		 </trim>
+-->
+
+	<!-- 
+	 bind : 변수를 만든 후 바인딩 한다.  
+	 이때 _parameter가 파라미터로 전달 된 Object를 의미하며, Collection의 경우 get
+	 Object의 경우 getter를 사용한다.	 
+	-->
+	<trim prefix="WHERE" prefixOverrides="AND | OR">
+		 	<bind name="namePattern" value="'%' + _parameter.get('nameValue') + '%'"/>
+		 
+		 	<if test="nameValue != null">
+		 		MENU_NAME LIKE #{ namePattern }
+			</if>
+			<if test="categoryValue != null">
+			   AND CATEGORY_CODE = #{ categoryValue } 
+			</if>
+		 </trim>
 	</select>
-
-
-
- 	
- </mapper>
+	
+	<update id="modifyMenu" parameterType="hashmap">
+		<!-- 
+			값을 입력한 일부 컬럼만 값을 변경하려고 if 엘리먼트를 이용하였으나
+			변경할 메뉴 이름을 입력하지 않은 경우 SET이 빠지기 때문에 set 키워드가 누락 되었다는 오류가 발생한다.
+			또는 set 키워드가 있더라도 , 가 앞에 붙거나 뒤에 붙어 문법적인 오류가 발생한다.
+		 -->
+		<!-- UPDATE
+		       TBL_MENU
+		<if test="name != null and name != ''">
+	       SET MENU_NAME = #{ name }
+		</if>
+		<if test="categoryCode != null and categoryCode gt 0">
+		     , CATEGORY_CODE = #{ categoryCode }
+		</if>
+		<if test="orderableStatus != null and orderableStatus != ''">
+		     , ORDERABLE_STATUS = #{ orderableStatus }
+		</if>
+		 WHERE MENU_CODE = #{ code } -->
+		 
+		 
+		 
+		 <!-- 해결 방법 1. <set> 엘리먼트 사용 -->
+		 <!-- 
+		 	<set> 엘리먼트 내부에 내용이 있을 시 set 구문을 자동으로 추가해준다.
+		 	앞 또는 뒤에 붙은 콤마를 제거해준다.
+		  -->
+		 
+<!-- 		 UPDATE
+		       TBL_MENU
+		<set>
+		<if test="name != null and name != ''">
+	        MENU_NAME = #{ name }
+		</if>
+		<if test="categoryCode != null and categoryCode gt 0">
+		     , CATEGORY_CODE = #{ categoryCode }
+		</if>
+		<if test="orderableStatus != null and orderableStatus != ''">
+		     , ORDERABLE_STATUS = #{ orderableStatus }
+		</if>
+		</set>
+		 WHERE MENU_CODE = #{ code } -->
+		 
+		
+		<!-- 해결방법 2. <trim> 엘리먼트 사용 --> 
+		UPDATE
+		       TBL_MENU
+		<trim prefix="SET" prefixOverrides=",">
+		<if test="name != null and name != ''">
+	        MENU_NAME = #{ name } 
+		</if>
+		<if test="categoryCode != null and categoryCode gt 0">
+		     , CATEGORY_CODE = #{ categoryCode } 
+		</if>
+		<if test="orderableStatus != null and orderableStatus != ''">
+		     , ORDERABLE_STATUS = #{ orderableStatus }
+		</if>
+		</trim>
+		 WHERE MENU_CODE = #{ code }
+	
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>

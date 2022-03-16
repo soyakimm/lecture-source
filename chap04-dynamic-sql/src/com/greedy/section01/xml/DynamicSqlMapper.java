@@ -6,8 +6,8 @@ import java.util.Map;
 import com.greedy.common.MenuDTO;
 import com.greedy.common.SearchCriteria;
 
-public interface DynamicSqlMapper { /*인터페이스에 정의되도록한다*/
-	
+public interface DynamicSqlMapper {
+
 	List<MenuDTO> selectMenuByPrice(Map<String, Integer> map);
 
 	List<MenuDTO> searchMenu(SearchCriteria searchCriteria);
@@ -20,5 +20,8 @@ public interface DynamicSqlMapper { /*인터페이스에 정의되도록한다*/
 
 	List<MenuDTO> searchMenuByNameOrCategory(Map<String, Object> searchCriteria);
 
+	int modifyMenu(Map<String, Object> criteria);
+
 }
+
 
