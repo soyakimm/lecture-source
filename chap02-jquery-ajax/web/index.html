@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery ajax</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+	<h1 align="center">jQuery Ajax</h1>
+	<h3>개요</h3>
+	<p>
+	jQuery를 사용하면 브라우저 호환성을 고려하지 않아도 편리하게 ajax를 사용할 수 있다.
+	</p>
+	<h3>simple string ajax</h3>
+	<input type="text" name="name" id="param">
+	<button id="sendServer">서버로 전송</button>
+	<br>
+	<p id="result"></p>
+	<script>
+		$("#sendServer").click(function(){
+			const name = $("#param").val(); //'#'아이디 선택자
+			
+			$.ajax({ //요청하는 function
+				url : "/chap02/jquery", //객체값을 넘김
+				data : { name : name },
+				method : "GET" /*전송방식*/,
+				success : function(data, textStatus, xhr){ /*통신 성공했을때 수행하고자 하는 동작 */
+					$("#result").text(data);
+					console.log(textStatus);
+					console.log(xhr);
+				}, 
+				error : function(xhr, status){ /*통신 실패했을때 수행하고자 하는 동작 */
+					console.log(xhr);
+					console.log(status);
+				} 
+				
+			}); 
+		});
+	
+	</script>
+	
+	
+</body>
+</html>

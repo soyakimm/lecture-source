@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>simple ajax</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+	<h1 align="center">ajax 요청 후 stream을 이용한 문자열 응답</h1>
+	
+	<h2>1. GET 방식의 데이터 요청</h2>
+	
+	<h3>1-1. 데이터 전송 없이 문자열 반환</h3>
+	<button id="send-get-1">전송</button>
+	<script>
+		$("#send-get-1").click(function(){
+			$.ajax({
+				url : "/chap03/fisrt/receive",
+				type : "get",
+				success : function(data) {
+					alert(data);
+				},
+				error : function(xhr) {
+					console.log(xhr);
+				}
+				
+			});
+		});
+	</script>
+	
+	
+	
+	<h3>1-2. data로 값 전송 후 문자열 반환</h3>
+	<button id="send-post-1">전송</button>
+	<script>
+		$("#send-post-1").click(function(){
+			$.ajax({
+				url : "/chap03/fisrt/receive",
+				type : "post",
+				success : function(data) {
+					alert(data);
+				},
+				error : function(xhr) {
+					console.log(xhr);
+				}
+				
+			});
+		});
+	</script>
+	
+	
+	
+	<h2>2. POST 방식의 데이터 요청</h2>
+	
+	<h3>2-1. 데이터 전송 없이 문자열 반환</h3>
+	<input type="text" id="message-get-2"><button id="send-get-2">메세지 전송</button>
+	<script>
+	 $("#send-get-2").click(function(){
+		const message = $("#message-get-2").val();
+		
+		$.ajax({
+			url : "/chap03/first/message",
+			type : "get",
+			data : { message : message/*실제변수값*/},
+			success : function(data) {
+				alert(data);
+			},
+			error : function(xhr) {
+				console.log(xhr);
+			}
+		});
+	 });
+	</script>
+	
+	<h3>2-2. data로 값 전송 후 문자열 반환</h3>
+		<input type="text" id="message-post-2"><button id="send-post-2">메세지 전송</button>
+	<script>
+	 $("#send-post-2").click(function(){
+		const message = $("#message-post-2").val();
+		
+		$.ajax({
+			url : "/chap03/first/message",
+			type : "post",
+			data : { message/*key*/ : message/*실제변수값*/},
+			success : function(data) {
+				alert(data);
+			},
+			error : function(xhr) {
+				console.log(xhr);
+			}
+		});
+	 });
+	</script>
+
+	
+	
+</body>
+</html>
